@@ -1,0 +1,16 @@
+{
+  "name": "todo-list-life-dashboard",
+  "version": "1.0.0",
+  "description": "A single-page productivity dashboard built with HTML, CSS, and Vanilla JavaScript.",
+  "scripts": {
+    "test": "jest --testPathPattern=\"app.test.js\" --no-coverage"
+  },
+  "devDependencies": {
+    "fast-check": "^3.22.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  }
+}
