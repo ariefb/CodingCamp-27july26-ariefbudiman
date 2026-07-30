@@ -5,6 +5,8 @@
   // Requirements 5.1, 5.2: tasks and links are stored under separate keys.
   const TASKS_KEY = 'dashboard_tasks';
   const LINKS_KEY = 'dashboard_links';
+  const NAME_KEY  = 'dashboard_name';
+  const THEME_KEY = 'dashboard_theme';
 
   // ─── Storage ───────────────────────────────────────────────────────────────
   // Requirements 5.1 – 5.4
@@ -52,16 +54,36 @@
     },
     render() {
       const now = new Date();
-      const timeEl = document.getElementById('greeting-time');
-      const dateEl = document.getElementById('greeting-date');
-      const msgEl  = document.getElementById('greeting-message');
-      if (timeEl) timeEl.textContent = GreetingWidget.formatTime(now);
-      if (dateEl) dateEl.textContent = GreetingWidget.formatDate(now);
-      if (msgEl)  msgEl.textContent  = GreetingWidget.getGreeting(now.getHours());
+      const timeEl    = document.getElementById('greeting-time');
+      const dateEl    = document.getElementById('greeting-date');
+      const msgEl     = document.getElementById('greeting-message');
+      const nameDisp  = document.getElementById('greeting-name-display');
+      if (timeEl)   timeEl.textContent   = GreetingWidget.formatTime(now);
+      if (dateEl)   dateEl.textContent   = GreetingWidget.formatDate(now);
+      if (msgEl)    msgEl.textContent    = GreetingWidget.getGreeting(now.getHours());
+      if (nameDisp) {
+        const saved = Storage.load(NAME_KEY);
+        const name  = Array.isArray(saved) ? '' : (saved || '');
+        nameDisp.textContent = name ? name : '';
+      }
     },
     init() {
       GreetingWidget.render();
       setInterval(GreetingWidget.tick, 60000);
+      // Challenge: Custom name — restore saved name into the input field
+      const nameInput = document.getElementById('greeting-name-input');
+      if (nameInput) {
+        const saved = Storage.load(NAME_KEY);
+        const name  = Array.isArray(saved) ? '' : (saved || '');
+        nameInput.value = name;
+        nameInput.addEventListener('input', function () {
+          const val = nameInput.value.trim();
+          // Save raw string (not array) under NAME_KEY
+          try { localStorage.setItem(NAME_KEY, JSON.stringify(val)); } catch(e) {}
+          const nameDisp = document.getElementById('greeting-name-display');
+          if (nameDisp) nameDisp.textContent = val;
+        });
+      }
     },
     tick() {
       GreetingWidget.render();
@@ -161,6 +183,35 @@
               const m = form.querySelector('.validation-message');
               if (m) m.remove();
               input.removeEventListener('input', clearMsg);
+            });
+          }
+        }
+        return;
+      }
+      // Challenge: Prevent duplicate tasks (case-insensitive)
+      const descTrimmed = description.trim().toLowerCase();
+      const isDuplicate = TodoList.tasks.some(function (t) {
+        return t.description.toLowerCase() === descTrimmed;
+      });
+      if (isDuplicate) {
+        const form2 = document.getElementById('todo-form');
+        if (form2) {
+          const existing = form2.querySelector('.validation-message');
+          if (existing) existing.remove();
+          const input2 = document.getElementById('todo-input');
+          const msg2 = document.createElement('span');
+          msg2.className = 'validation-message';
+          msg2.textContent = 'Task already exists!';
+          if (input2 && input2.parentNode) {
+            input2.insertAdjacentElement('afterend', msg2);
+          } else {
+            form2.appendChild(msg2);
+          }
+          if (input2) {
+            input2.addEventListener('input', function clearMsg2() {
+              const m = form2.querySelector('.validation-message');
+              if (m) m.remove();
+              input2.removeEventListener('input', clearMsg2);
             });
           }
         }
@@ -430,11 +481,48 @@
     },
   };
 
+  // ─── ThemeToggle ──────────────────────────────────────────────────────────
+  // Challenge: Light/Dark mode toggle, persisted in localStorage
+  const ThemeToggle = {
+    DARK: 'dark',
+    LIGHT: 'light',
+    init() {
+      const saved = ThemeToggle._loadTheme();
+      ThemeToggle._apply(saved);
+      const btn = document.getElementById('btn-theme-toggle');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          const current = document.body.getAttribute('data-theme') || ThemeToggle.LIGHT;
+          const next = current === ThemeToggle.DARK ? ThemeToggle.LIGHT : ThemeToggle.DARK;
+          ThemeToggle._apply(next);
+          ThemeToggle._saveTheme(next);
+        });
+      }
+    },
+    _apply(theme) {
+      document.body.setAttribute('data-theme', theme);
+      const btn = document.getElementById('btn-theme-toggle');
+      if (btn) btn.textContent = theme === ThemeToggle.DARK ? '☀️' : '🌙';
+    },
+    _saveTheme(theme) {
+      try { localStorage.setItem(THEME_KEY, theme); } catch(e) {}
+    },
+    _loadTheme() {
+      try {
+        const t = localStorage.getItem(THEME_KEY);
+        return (t === ThemeToggle.DARK || t === ThemeToggle.LIGHT) ? t : ThemeToggle.LIGHT;
+      } catch(e) {
+        return ThemeToggle.LIGHT;
+      }
+    },
+  };
+
   // ─── App ──────────────────────────────────────────────────────────────────
   const App = {
     init() {
       const tasks = Storage.load(TASKS_KEY);
       const links = Storage.load(LINKS_KEY);
+      ThemeToggle.init();
       TodoList.init(tasks);
       QuickLinks.init(links);
       GreetingWidget.init();
@@ -457,10 +545,13 @@
     Storage,
     TASKS_KEY,
     LINKS_KEY,
+    NAME_KEY,
+    THEME_KEY,
     GreetingWidget,
     FocusTimer,
     TodoList,
     QuickLinks,
+    ThemeToggle,
   };
 
 })();
