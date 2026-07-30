@@ -7,6 +7,38 @@
     "6.5 Write property test for `toggleComplete` being its own inverse — Property 7": {
       "status": "passed",
       "lastRunTimestamp": 1785450691839
+    },
+    "4.3 Write property test for `getGreeting` — Property 2": {
+      "status": "passed",
+      "lastRunTimestamp": 1785453519218
+    },
+    "4.2 Write property test for `formatTime` — Property 1": {
+      "status": "passed",
+      "lastRunTimestamp": 1785453526548
+    },
+    "5.2 Write property test for `FocusTimer.formatTime` — Property 3": {
+      "status": "passed",
+      "lastRunTimestamp": 1785453564740
+    },
+    "6.2 Write property test for `addTask` growing the list — Property 4": {
+      "status": "passed",
+      "lastRunTimestamp": 1785453722932
+    },
+    "6.3 Write property test for blank input rejection — Property 5": {
+      "status": "passed",
+      "lastRunTimestamp": 1785453728935
+    },
+    "3.1 Write property test for Storage round-trip (tasks) — Property 6": {
+      "status": "passed",
+      "lastRunTimestamp": 1785453896725
+    },
+    "3.2 Write property test for Storage round-trip (links) — Property 8": {
+      "status": "passed",
+      "lastRunTimestamp": 1785453897265
+    },
+    "3.3 Write property test for corrupt storage fallback — Property 10": {
+      "status": "passed",
+      "lastRunTimestamp": 1785453937804
     }
   },
   "executionHistory": {
@@ -424,6 +456,11 @@
         "executionId": "a2015552-206b-42ae-b0c2-bbe874e9a8b3",
         "chatSessionId": "sess_77422287-2148-4a19-823c-b5df77ad56f5",
         "timestamp": 1785450751653
+      },
+      {
+        "executionId": "cfafa852-0fa4-40a5-a61a-6542540009b0",
+        "chatSessionId": "sess_c68a74f0-fc97-402a-9105-15e87ebae1cf",
+        "timestamp": 1785453962727
       }
     ],
     "3.3 Write property test for corrupt storage fallback — Property 10": [
@@ -436,6 +473,11 @@
         "executionId": "a2015552-206b-42ae-b0c2-bbe874e9a8b3",
         "chatSessionId": "sess_77422287-2148-4a19-823c-b5df77ad56f5",
         "timestamp": 1785450757644
+      },
+      {
+        "executionId": "cfafa852-0fa4-40a5-a61a-6542540009b0",
+        "chatSessionId": "sess_c68a74f0-fc97-402a-9105-15e87ebae1cf",
+        "timestamp": 1785453969346
       }
     ],
     "4.2 Write property test for `formatTime` — Property 1": [
@@ -443,6 +485,16 @@
         "executionId": "a2015552-206b-42ae-b0c2-bbe874e9a8b3",
         "chatSessionId": "sess_77422287-2148-4a19-823c-b5df77ad56f5",
         "timestamp": 1785450732168
+      },
+      {
+        "executionId": "cfafa852-0fa4-40a5-a61a-6542540009b0",
+        "chatSessionId": "sess_c68a74f0-fc97-402a-9105-15e87ebae1cf",
+        "timestamp": 1785453238464
+      },
+      {
+        "executionId": "cfafa852-0fa4-40a5-a61a-6542540009b0",
+        "chatSessionId": "sess_c68a74f0-fc97-402a-9105-15e87ebae1cf",
+        "timestamp": 1785453582493
       }
     ],
     "4.3 Write property test for `getGreeting` — Property 2": [
@@ -450,6 +502,16 @@
         "executionId": "a2015552-206b-42ae-b0c2-bbe874e9a8b3",
         "chatSessionId": "sess_77422287-2148-4a19-823c-b5df77ad56f5",
         "timestamp": 1785450732420
+      },
+      {
+        "executionId": "cfafa852-0fa4-40a5-a61a-6542540009b0",
+        "chatSessionId": "sess_c68a74f0-fc97-402a-9105-15e87ebae1cf",
+        "timestamp": 1785453244205
+      },
+      {
+        "executionId": "cfafa852-0fa4-40a5-a61a-6542540009b0",
+        "chatSessionId": "sess_c68a74f0-fc97-402a-9105-15e87ebae1cf",
+        "timestamp": 1785453589856
       }
     ],
     "5.2 Write property test for `FocusTimer.formatTime` — Property 3": [
@@ -457,6 +519,16 @@
         "executionId": "a2015552-206b-42ae-b0c2-bbe874e9a8b3",
         "chatSessionId": "sess_77422287-2148-4a19-823c-b5df77ad56f5",
         "timestamp": 1785450732599
+      },
+      {
+        "executionId": "cfafa852-0fa4-40a5-a61a-6542540009b0",
+        "chatSessionId": "sess_c68a74f0-fc97-402a-9105-15e87ebae1cf",
+        "timestamp": 1785453249558
+      },
+      {
+        "executionId": "cfafa852-0fa4-40a5-a61a-6542540009b0",
+        "chatSessionId": "sess_c68a74f0-fc97-402a-9105-15e87ebae1cf",
+        "timestamp": 1785453596435
       }
     ],
     "6.2 Write property test for `addTask` growing the list — Property 4": [
@@ -464,6 +536,16 @@
         "executionId": "a2015552-206b-42ae-b0c2-bbe874e9a8b3",
         "chatSessionId": "sess_77422287-2148-4a19-823c-b5df77ad56f5",
         "timestamp": 1785450732740
+      },
+      {
+        "executionId": "cfafa852-0fa4-40a5-a61a-6542540009b0",
+        "chatSessionId": "sess_c68a74f0-fc97-402a-9105-15e87ebae1cf",
+        "timestamp": 1785453611464
+      },
+      {
+        "executionId": "cfafa852-0fa4-40a5-a61a-6542540009b0",
+        "chatSessionId": "sess_c68a74f0-fc97-402a-9105-15e87ebae1cf",
+        "timestamp": 1785453753070
       }
     ],
     "6.3 Write property test for blank input rejection — Property 5": [
@@ -471,6 +553,16 @@
         "executionId": "a2015552-206b-42ae-b0c2-bbe874e9a8b3",
         "chatSessionId": "sess_77422287-2148-4a19-823c-b5df77ad56f5",
         "timestamp": 1785450732907
+      },
+      {
+        "executionId": "cfafa852-0fa4-40a5-a61a-6542540009b0",
+        "chatSessionId": "sess_c68a74f0-fc97-402a-9105-15e87ebae1cf",
+        "timestamp": 1785453617592
+      },
+      {
+        "executionId": "cfafa852-0fa4-40a5-a61a-6542540009b0",
+        "chatSessionId": "sess_c68a74f0-fc97-402a-9105-15e87ebae1cf",
+        "timestamp": 1785453759813
       }
     ],
     "3.1 Write property test for Storage round-trip (tasks) — Property 6": [
@@ -478,6 +570,23 @@
         "executionId": "a2015552-206b-42ae-b0c2-bbe874e9a8b3",
         "chatSessionId": "sess_77422287-2148-4a19-823c-b5df77ad56f5",
         "timestamp": 1785450745514
+      },
+      {
+        "executionId": "cfafa852-0fa4-40a5-a61a-6542540009b0",
+        "chatSessionId": "sess_c68a74f0-fc97-402a-9105-15e87ebae1cf",
+        "timestamp": 1785453956740
+      }
+    ],
+    "5.4 Write unit tests for `FocusTimer` state transitions": [
+      {
+        "executionId": "cfafa852-0fa4-40a5-a61a-6542540009b0",
+        "chatSessionId": "sess_c68a74f0-fc97-402a-9105-15e87ebae1cf",
+        "timestamp": 1785453604314
+      },
+      {
+        "executionId": "cfafa852-0fa4-40a5-a61a-6542540009b0",
+        "chatSessionId": "sess_c68a74f0-fc97-402a-9105-15e87ebae1cf",
+        "timestamp": 1785453746872
       }
     ]
   }

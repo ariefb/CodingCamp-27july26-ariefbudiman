@@ -38,19 +38,19 @@ Build a single-page productivity dashboard using HTML, CSS, and Vanilla JavaScri
   - Define constants `TASKS_KEY = "dashboard_tasks"` and `LINKS_KEY = "dashboard_links"`
   - _Requirements: 5.1, 5.2, 5.3, 5.4_
 
-  - [-] 3.1 Write property test for Storage round-trip (tasks) — Property 6
+  - [x] 3.1 Write property test for Storage round-trip (tasks) — Property 6
     - **Property 6: Task persistence is a round-trip**
     - Use `fc.array(fc.record({id: fc.string(), description: fc.string().filter(s=>s.trim()!==''), completed: fc.boolean()}))` to generate task arrays
     - Assert `Storage.load(TASKS_KEY)` deeply equals the saved array
     - **Validates: Requirements 3.9, 3.10, 5.1**
 
-  - [-] 3.2 Write property test for Storage round-trip (links) — Property 8
+  - [x] 3.2 Write property test for Storage round-trip (links) — Property 8
     - **Property 8: Link persistence is a round-trip**
     - Use `fc.array(fc.record({id: fc.string(), label: fc.string().filter(s=>s.trim()!==''), url: fc.string().filter(s=>s.trim()!='')}))` to generate link arrays
     - Assert `Storage.load(LINKS_KEY)` deeply equals the saved array
     - **Validates: Requirements 4.5, 4.6, 5.2**
 
-  - [-] 3.3 Write property test for corrupt storage fallback — Property 10
+  - [x] 3.3 Write property test for corrupt storage fallback — Property 10
     - **Property 10: Corrupt storage falls back to empty array**
     - Use `fc.string().filter(s => { try { JSON.parse(s); return false; } catch(e) { return true; } })` for invalid JSON strings
     - Assert `Storage.load(key)` returns `[]` and does not throw
@@ -63,13 +63,13 @@ Build a single-page productivity dashboard using HTML, CSS, and Vanilla JavaScri
     - `getGreeting`: map hour [0–23] to one of "Good Morning" / "Good Afternoon" / "Good Evening" / "Good Night" per the requirements table
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6_
 
-  - [~] 4.2 Write property test for `formatTime` — Property 1
+  - [x] 4.2 Write property test for `formatTime` — Property 1
     - **Property 1: Time formatting always produces valid HH:MM**
     - Use `fc.date()` → extract hour/minute, call `GreetingWidget.formatTime(date)`
     - Assert result matches `/^\d{2}:\d{2}$/` with HH in [00–23] and MM in [00–59]
     - **Validates: Requirements 1.1**
 
-  - [~] 4.3 Write property test for `getGreeting` — Property 2
+  - [x] 4.3 Write property test for `getGreeting` — Property 2
     - **Property 2: Greeting correctly maps all hours to greeting strings**
     - Use `fc.integer({min:0, max:23})` for the hour
     - Assert exactly the correct greeting string for each hour range
@@ -87,7 +87,7 @@ Build a single-page productivity dashboard using HTML, CSS, and Vanilla JavaScri
     - `formatTime(n)`: convert integer seconds [0–1500] to `"MM:SS"` string with zero-padding
     - _Requirements: 2.1, 2.7_
 
-  - [~] 5.2 Write property test for `FocusTimer.formatTime` — Property 3
+  - [x] 5.2 Write property test for `FocusTimer.formatTime` — Property 3
     - **Property 3: Timer formatting always produces valid MM:SS**
     - Use `fc.integer({min:0, max:1500})` for the seconds value
     - Assert result matches `MM:SS` pattern and `(MM * 60) + SS === n`
@@ -104,7 +104,7 @@ Build a single-page productivity dashboard using HTML, CSS, and Vanilla JavaScri
     - `FocusTimer.init()`: call `render()` to display initial 25:00
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7_
 
-  - [~] 5.4 Write unit tests for `FocusTimer` state transitions
+  - [x] 5.4 Write unit tests for `FocusTimer` state transitions
     - Test: timer initializes at 25:00 (`state.remainingSeconds === 1500`) — Requirement 2.1
     - Test: start + advance N seconds with fake timers → `remainingSeconds` decreases by N — Requirement 2.2
     - Test: stop pauses countdown (value unchanged after stop + advance) — Requirement 2.4
@@ -118,13 +118,13 @@ Build a single-page productivity dashboard using HTML, CSS, and Vanilla JavaScri
     - `deleteTask`: filter out task by id; call `Storage.save`; call `render()`
     - _Requirements: 3.1, 3.2, 3.8, 3.9_
 
-  - [~] 6.2 Write property test for `addTask` growing the list — Property 4
+  - [x] 6.2 Write property test for `addTask` growing the list — Property 4
     - **Property 4: Adding a valid task grows the list by one**
     - Use `fc.string().filter(s => s.trim() !== '')` for description
     - Assert list length increases by 1 and new task has trimmed description and `completed === false`
     - **Validates: Requirements 3.1**
 
-  - [~] 6.3 Write property test for blank input rejection — Property 5
+  - [x] 6.3 Write property test for blank input rejection — Property 5
     - **Property 5: Task validation rejects blank descriptions for both add and edit**
     - Use `fc.stringOf(fc.constantFrom(' ', '\t', '\n'))` for blank strings
     - Assert `addTask(s)` leaves list unchanged and `editTask(id, s)` leaves the task description unchanged
